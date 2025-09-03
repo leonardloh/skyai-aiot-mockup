@@ -1,7 +1,6 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Thermometer, Droplets, Wind, Sun } from 'lucide-react';
-import { currentEnvironmental, environmentalHistory } from '../data/mockData';
+import { currentEnvironmental } from '../data/mockData';
 
 interface EnvironmentalMonitoringProps {
   compact?: boolean;

@@ -1,4 +1,4 @@
-import { 
+import type { 
   EnvironmentalData, 
   PlantData, 
   IrrigationData, 
@@ -34,7 +34,6 @@ export const plantsGrid: PlantData[] = Array.from({ length: 48 }, (_, i) => {
   const column = i % 8;
   const plantTypes = ['Tomato', 'Lettuce', 'Cucumber', 'Pepper', 'Herbs', 'Spinach'];
   const stages = ['seedling', 'vegetative', 'flowering', 'fruiting', 'harvest'] as const;
-  const statuses = ['healthy', 'warning', 'critical'] as const;
   
   const healthScore = 60 + Math.random() * 40;
   const status = healthScore > 85 ? 'healthy' : healthScore > 70 ? 'warning' : 'critical';

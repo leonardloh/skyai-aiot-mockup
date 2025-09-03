@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Droplets, Beaker, Calendar, Settings, Play, Pause } from 'lucide-react';
+import React from 'react';
 import { irrigationZones } from '../data/mockData';
 
 const IrrigationManagement: React.FC = () => {

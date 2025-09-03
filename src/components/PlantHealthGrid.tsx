@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Sprout, Droplets, Calendar, TrendingUp, Filter } from 'lucide-react';
 import { plantsGrid } from '../data/mockData';
-import { PlantData } from '../types/dashboard';
+import type { PlantData } from '../types/dashboard';
 
 interface PlantHealthGridProps {
   compact?: boolean;
