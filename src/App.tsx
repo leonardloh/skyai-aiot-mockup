@@ -4,6 +4,61 @@ import React, { useState } from 'react';
 // import { Thermometer, Droplets, Leaf, Zap, AlertTriangle, TrendingUp, Settings, Activity } from 'lucide-react';
 import './App.css';
 
+// Icon Component for consistent SVG icons
+interface IconProps {
+  name: string;
+  size?: number;
+  color?: string;
+  className?: string;
+}
+
+const Icon: React.FC<IconProps> = ({ name, size = 20, color = 'currentColor', className = '' }) => {
+  const iconPaths = {
+    // Navigation Icons
+    dashboard: 'M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z',
+    environment: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z',
+    plant: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+    water: 'M12 2c1.5 6 6 10 6 13 0 3.31-2.69 6-6 6s-6-2.69-6-6c0-3 4.5-7 6-13z',
+    chart: 'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z',
+    ai: 'M22 7.5C22 5.01 19.99 3 17.5 3S13 5.01 13 7.5c0 2.48 2.02 4.5 4.5 4.5 2.49 0 4.5-2.02 4.5-4.5zM17.5 10C16.12 10 15 8.88 15 7.5S16.12 5 17.5 5 20 6.12 20 7.5 18.88 10 17.5 10zm-.5-2.5c0-.28.22-.5.5-.5s.5.22.5.5-.22.5-.5.5-.5-.22-.5-.5zm-5.5 6.5h-7c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h7c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zm-1 4h-5v-2h5v2z',
+    
+    // Dashboard Card Icons
+    temperature: 'M12 2c1.1 0 2 .9 2 2v8.5c1.74 1.01 2.5 3.17 1.49 4.91-.74 1.28-2.23 1.79-3.49 1.19-1.26-.6-1.99-1.91-1.99-3.35 0-.65.17-1.29.49-1.85V4c0-1.1.9-2 2-2zm0 2c-.55 0-1 .45-1 1v6.59c-.58.68-.58 1.68 0 2.36.58.68 1.58.68 2.16 0 .58-.68.58-1.68 0-2.36V5c0-.55-.45-1-1-1z',
+    humidity: 'M12 2c1.5 6 6 10 6 13 0 3.31-2.69 6-6 6s-6-2.69-6-6c0-3 4.5-7 6-13zm0 16c1.66 0 3-1.34 3-3 0-1.33-1.5-3.5-3-5.77C10.5 11.5 9 13.67 9 15c0 1.66 1.34 3 3 3z',
+    co2: 'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H9v-2h5v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z',
+    wind: 'M14.59 8H21v2h-6.41l1.41 1.41-1.41 1.42L10 8.24V6.76l4.59-4.59 1.41 1.42L14.59 5H21v2h-6.41zM3 12h6.41L7.59 10.59 9 9.17l4.59 4.59v1.48L9 19.83l-1.41-1.42L9.41 17H3v-2h6.41L7.59 13.41 9 14.83v-1.48L5.41 10H3v2z',
+    light: 'M12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zm0-2C8.13 4 5 7.13 5 11s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zM7 2h2v3H7zm0 17h2v3H7zm-4-8h3v2H3zm17 0h3v2h-3zm-2.64-6.36l1.42-1.42 1.41 1.42-1.41 1.41zm-12.02 0L5.93 3.22 7.34 1.81l1.41 1.41zm12.02 12.02l1.42 1.42-1.42 1.41-1.41-1.41zM5.93 20.78l1.41-1.42 1.42 1.42-1.42 1.41z',
+    pressure: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
+    soil: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+    
+    // Status Icons
+    healthy: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
+    warning: 'M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z',
+    critical: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z',
+    info: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z',
+    
+    // Analytics Icons
+    growth: 'M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z',
+    efficiency: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
+    revenue: 'M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z'
+  };
+
+  const pathData = iconPaths[name] || iconPaths.dashboard;
+
+  return (
+    <svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      className={className}
+      style={{ flexShrink: 0 }}
+    >
+      <path d={pathData} fill={color} />
+    </svg>
+  );
+};
+
 // Mock data for comprehensive dashboard
 const environmentalData = [
   { time: '00:00', temp: 22.5, humidity: 65, co2: 400, wind: 2.1, light: 0, pressure: 1013.2, soilTemp: 21.8, soilMoisture: 45, ph: 6.5 },
@@ -748,12 +803,12 @@ function App() {
   const [activeSection, setActiveSection] = useState('overview');
 
   const sidebarItems = [
-    { id: 'overview', label: 'Overview', icon: '▤' },
-    { id: 'environmental', label: 'Environmental', icon: '◐' },
-    { id: 'plants', label: 'Plant Health', icon: '◉' },
-    { id: 'irrigation', label: 'Irrigation', icon: '◎' },
-    { id: 'harvest', label: 'Harvest Predict', icon: '◈' },
-    { id: 'ai-insights', label: 'AI Insights', icon: '◇' },
+    { id: 'overview', label: 'Overview', icon: 'dashboard' },
+    { id: 'environmental', label: 'Environment', icon: 'environment' },
+    { id: 'plants', label: 'Plant Health', icon: 'plant' },
+    { id: 'irrigation', label: 'Irrigation', icon: 'water' },
+    { id: 'harvest', label: 'Harvest Predict', icon: 'chart' },
+    { id: 'ai-insights', label: 'AI Insights', icon: 'ai' },
   ];
 
   const renderContent = () => {
@@ -2369,7 +2424,9 @@ function App() {
                       color: activeSection === item.id ? '#000000' : '#888888'
                     }}
                   >
-                    <span style={{ fontSize: '20px', marginRight: '12px' }}>{item.icon}</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ marginRight: '12px' }}>
+                      <path d={item.icon} fill={activeSection === item.id ? '#000000' : '#888888'} />
+                    </svg>
                     {item.label}
                   </button>
                 );
