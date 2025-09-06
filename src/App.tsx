@@ -1011,8 +1011,8 @@ function App() {
                 <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Healthy</div>
               </div>
               <div style={{ backgroundColor: 'var(--color-background-card)', padding: '20px', borderRadius: '8px', border: '1px solid var(--color-border)', textAlign: 'center' }}>
-                <div style={{ fontSize: '24px', color: '#FFFF00', marginBottom: '8px' }}>●</div>
-                <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#FFFF00', marginBottom: '4px' }}>{plantHealthSummary.warning}</div>
+                <div style={{ fontSize: '24px', color: '#B8860B', marginBottom: '8px' }}>●</div>
+                <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#B8860B', marginBottom: '4px' }}>{plantHealthSummary.warning}</div>
                 <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Warning</div>
               </div>
               <div style={{ backgroundColor: 'var(--color-background-card)', padding: '20px', borderRadius: '8px', border: '1px solid var(--color-border)', textAlign: 'center' }}>
@@ -1117,7 +1117,7 @@ function App() {
                         <div style={{ 
                           fontSize: '20px', 
                           fontWeight: 'bold', 
-                          color: plant.health >= 90 ? '#00FF00' : plant.health >= 75 ? '#FFFF00' : '#FF0000',
+                          color: plant.health >= 90 ? '#00FF00' : plant.health >= 75 ? '#B8860B' : '#FF0000',
                           marginBottom: '2px'
                         }}>
                           {plant.health}%
@@ -1138,11 +1138,11 @@ function App() {
                       </div>
                       <div style={{ fontSize: '11px' }}>
                         <span style={{ color: 'var(--color-text-secondary)' }}>pH: </span>
-                        <span style={{ color: plant.ph >= 6.0 && plant.ph <= 7.0 ? '#00FF00' : '#FFFF00', fontWeight: '500' }}>{plant.ph}</span>
+                        <span style={{ color: plant.ph >= 6.0 && plant.ph <= 7.0 ? '#00FF00' : '#B8860B', fontWeight: '500' }}>{plant.ph}</span>
                       </div>
                       <div style={{ fontSize: '11px' }}>
                         <span style={{ color: 'var(--color-text-secondary)' }}>Moisture: </span>
-                        <span style={{ color: plant.moisture >= 60 ? '#00FF00' : plant.moisture >= 40 ? '#FFFF00' : '#FF6B6B', fontWeight: '500' }}>{plant.moisture}%</span>
+                        <span style={{ color: plant.moisture >= 60 ? '#00FF00' : plant.moisture >= 40 ? '#B8860B' : '#FF6B6B', fontWeight: '500' }}>{plant.moisture}%</span>
                       </div>
                       <div style={{ fontSize: '11px' }}>
                         <span style={{ color: 'var(--color-text-secondary)' }}>Leaves: </span>
@@ -1150,7 +1150,7 @@ function App() {
                       </div>
                       <div style={{ fontSize: '11px' }}>
                         <span style={{ color: 'var(--color-text-secondary)' }}>Light: </span>
-                        <span style={{ color: plant.lightExposure >= 700 ? '#00FF00' : '#FFFF00', fontWeight: '500' }}>{plant.lightExposure} lux</span>
+                        <span style={{ color: plant.lightExposure >= 700 ? '#00FF00' : '#B8860B', fontWeight: '500' }}>{plant.lightExposure} lux</span>
                       </div>
                     </div>
 
@@ -1281,13 +1281,13 @@ function App() {
                     {/* Zone Metrics */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px', marginBottom: '12px' }}>
                       <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: zone.moisture >= 60 ? '#00FF00' : zone.moisture >= 40 ? '#FFFF00' : '#FF6B6B' }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: zone.moisture >= 60 ? '#00FF00' : zone.moisture >= 40 ? '#B8860B' : '#FF6B6B' }}>
                           {zone.moisture}%
                         </div>
                         <div style={{ fontSize: '10px', color: 'var(--color-text-secondary)' }}>Soil Moisture</div>
                       </div>
                       <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: zone.ph >= 6.0 && zone.ph <= 7.0 ? '#00FF00' : '#FFFF00' }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: zone.ph >= 6.0 && zone.ph <= 7.0 ? '#00FF00' : '#B8860B' }}>
                           {zone.ph}
                         </div>
                         <div style={{ fontSize: '10px', color: 'var(--color-text-secondary)' }}>pH Level</div>
@@ -1543,7 +1543,7 @@ function App() {
                     <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Predicted: {yieldAnalytics.currentWeek.predicted}kg</span>
                     <span style={{ fontSize: '12px', color: 'var(--color-text-primary)' }}>Actual: {yieldAnalytics.currentWeek.actual}kg</span>
                   </div>
-                  <div style={{ fontSize: '12px', color: yieldAnalytics.currentWeek.efficiency >= 100 ? '#00FF00' : '#FFFF00', fontWeight: '500' }}>
+                  <div style={{ fontSize: '12px', color: yieldAnalytics.currentWeek.efficiency >= 100 ? '#00FF00' : '#B8860B', fontWeight: '500' }}>
                     Efficiency: {yieldAnalytics.currentWeek.efficiency}%
                   </div>
                 </div>
@@ -1555,7 +1555,7 @@ function App() {
                     <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Predicted: {yieldAnalytics.lastWeek.predicted}kg</span>
                     <span style={{ fontSize: '12px', color: 'var(--color-text-primary)' }}>Actual: {yieldAnalytics.lastWeek.actual}kg</span>
                   </div>
-                  <div style={{ fontSize: '12px', color: yieldAnalytics.lastWeek.efficiency >= 100 ? '#00FF00' : '#FFFF00', fontWeight: '500' }}>
+                  <div style={{ fontSize: '12px', color: yieldAnalytics.lastWeek.efficiency >= 100 ? '#00FF00' : '#B8860B', fontWeight: '500' }}>
                     Efficiency: {yieldAnalytics.lastWeek.efficiency}%
                   </div>
                 </div>
@@ -1593,7 +1593,7 @@ function App() {
                         <div style={{
                           fontSize: '18px',
                           fontWeight: 'bold',
-                          color: prediction.daysRemaining <= 3 ? '#00FF00' : prediction.daysRemaining <= 7 ? '#FFFF00' : '#ffffff',
+                          color: prediction.daysRemaining <= 3 ? '#00FF00' : prediction.daysRemaining <= 7 ? '#B8860B' : '#ffffff',
                           marginBottom: '2px'
                         }}>
                           {prediction.daysRemaining === 0 ? 'Ready!' : `${prediction.daysRemaining} days`}
@@ -1654,7 +1654,7 @@ function App() {
                         {prediction.quality} Quality
                       </div>
                       <div style={{ fontSize: '11px', color: 'var(--color-text-secondary)' }}>
-                        Health: <span style={{ color: prediction.healthScore >= 90 ? '#00FF00' : prediction.healthScore >= 75 ? '#FFFF00' : '#FF6B6B', fontWeight: '500' }}>{prediction.healthScore}%</span>
+                        Health: <span style={{ color: prediction.healthScore >= 90 ? '#00FF00' : prediction.healthScore >= 75 ? '#B8860B' : '#FF6B6B', fontWeight: '500' }}>{prediction.healthScore}%</span>
                       </div>
                     </div>
 
@@ -1880,7 +1880,7 @@ function App() {
                         <div style={{
                           fontSize: '18px',
                           fontWeight: 'bold',
-                          color: insight.confidence >= 95 ? '#00FF00' : insight.confidence >= 90 ? '#FFFF00' : '#f59e0b',
+                          color: insight.confidence >= 95 ? '#00FF00' : insight.confidence >= 90 ? '#B8860B' : '#f59e0b',
                           marginBottom: '2px'
                         }}>
                           {insight.confidence}%
@@ -1911,7 +1911,7 @@ function App() {
                         <span style={{ color: 'var(--color-text-secondary)' }}>Risk Level: </span>
                         <span style={{ 
                           color: insight.riskLevel === 'very low' ? '#00FF00' : 
-                                insight.riskLevel === 'low' ? '#FFFF00' : 
+                                insight.riskLevel === 'low' ? '#B8860B' : 
                                 insight.riskLevel === 'medium' ? '#f59e0b' : '#ef4444', 
                           fontWeight: '500' 
                         }}>
@@ -1923,7 +1923,7 @@ function App() {
                         <span style={{ 
                           color: insight.priority === 'urgent' ? '#ef4444' : 
                                 insight.priority === 'immediate' ? '#f59e0b' : 
-                                insight.priority === 'today' ? '#FFFF00' : '#06b6d4', 
+                                insight.priority === 'today' ? '#B8860B' : '#06b6d4', 
                           fontWeight: '500' 
                         }}>
                           {insight.priority}
@@ -1997,7 +1997,7 @@ function App() {
                   </div>
                   <div style={{ fontSize: '40px', color: 'var(--color-text-primary)' }}>◎</div>
                 </div>
-                <p style={{ fontSize: '12px', color: '#FFFF00', margin: '12px 0 0 0' }}>↑ 8% above target</p>
+                <p style={{ fontSize: '12px', color: '#B8860B', margin: '12px 0 0 0' }}>↑ 8% above target</p>
               </div>
 
               <div style={{ backgroundColor: 'var(--color-background-card)', border: '1px solid var(--color-border)', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>
@@ -2045,7 +2045,7 @@ function App() {
                     <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Weekly Yield</div>
                   </div>
                   <div style={{ textAlign: 'center', padding: '12px', backgroundColor: 'var(--color-background-card)', borderRadius: '8px' }}>
-                    <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#FFFF00' }}>8</div>
+                    <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#B8860B' }}>8</div>
                     <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Ready to Harvest</div>
                   </div>
                 </div>
@@ -2074,7 +2074,7 @@ function App() {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                     <span style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>Sensor Network</span>
-                    <span style={{ fontSize: '14px', color: '#FFFF00', fontWeight: '500' }}>98.5% Uptime</span>
+                    <span style={{ fontSize: '14px', color: '#B8860B', fontWeight: '500' }}>98.5% Uptime</span>
                   </div>
                 </div>
                 <div style={{ padding: '12px', backgroundColor: 'var(--color-background-card)', border: '1px solid #FF6B6B', borderRadius: '6px' }}>
